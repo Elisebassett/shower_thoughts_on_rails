@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="post"></div>
+	<h1 class="home">What Was Your Last Shower Thought?</h1>
+	<%= form_for @post do |f| %>
+		<%= f.text_field :title, placeholder: "Title" %>
+		<%= f.text_area :content, placeholder: "Write your post here!" %>
+		<input type="hidden" name="user_id" value="2">
+		<%= f.submit %>
+	<% end %>
+
+
+
+
+
+<!-- 	<form class="spacing" action="/post" method="POST">
+		<div class="md-form">
+		<i class="fa fa-pencil prefix black-text"></i>
+		<textarea type="text" id="form8" class="md-textarea" maxlength="150" style="height: 100px" name="post[content]"></textarea>
+		<label for="form8">Your post here! Remember, keep it to 150 characters!</label>
+		</div>
+		<div class="text-center">
+		 <input class="btn btn-elegant round" type="submit" value="Post Thought">
+		</div>
+
+	</form>
+</div>
+ -->
+

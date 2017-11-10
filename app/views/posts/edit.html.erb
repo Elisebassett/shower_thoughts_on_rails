@@ -1,0 +1,7 @@
+<h1>Posts#even</h1>
+<p>Find me in app/views/posts/even.html.erb</p>
+<%= form_with model: @post do |f| %>
+	<%= f.text_field :title %>
+	<%= f.text_area :content %>
+	<%= f.submit %>
+<% end %>

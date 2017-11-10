@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1><%= @user.username %></h1>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="card card-body post_container">
+			<form action="/your_post" method="POST">
+		    <textarea class="card-title post no_title" readonly="true" maxlength='150'><%= @user.posts.last.content %></textarea>
+				<a class="delete_post card-link" href="/delete_post/<%= @user.posts.last.id %>">Delete</a>
+				<i class="fa fa-pencil edit_post card-link" aria-hidden="true"></i>
+			</form>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col">
+			<a href="/profile" class="btn btn-elegant round">Back to Profile</a>
+		</div>
+	</div>
+</div>
+
+
+<p><%= @post.content %></p>
+
+<p><%= link_to "Edit", edit_post_path %> <%= link_to "Destroy", @post,  method: :delete,  %></p>
+
+
+<%= link_to "See All Posts", posts_path %>
