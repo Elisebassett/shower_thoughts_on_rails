@@ -14,7 +14,6 @@ class UsersController < ApplicationController
       flash[:alert] = 'Your account was not created'
       redirect_to new_user_path
     end
-    redirect_to @user
   end
 
   def new

@@ -16,15 +16,7 @@ class LoginController < ApplicationController
   end
 
   def new
-  end
-
-  def even
-  end
-
-  def show
-  end
-
-  def update
+  
   end
 
   def destroy
