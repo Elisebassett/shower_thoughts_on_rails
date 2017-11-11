@@ -1,3 +1,23 @@
-<h1>Users#never</h1>
-<p>Find me in app/views/users/never.html.erb</p>
 
+<h1 class="h1 text-center mb-4">Create an Account</h1>
+
+<%= form_with model: @user do |f| %>
+	<i class="fa fa-user prefix black-text"></i>
+	<%= f.text_field :first_name, id: "first_name", class: "form-control"%>
+	<%= label_tag "first_name" %>
+	<%= f.text_field :last_name, id: "last_name", class: "form-control"%>
+	<%= label_tag "last_name", "Last Name"%>
+	<%= f.text_field :username, id: "username", class: "form-control"%>
+	<%= label_tag "username", "Username" %>
+	<i class="fa fa-envelope prefix black-text"></i>
+	<%= f.text_field :email, id: "email", class: "form-control"%>
+	<%= label_tag "email", "Email" %>
+	<i class="fa fa-lock prefix black-text"></i>
+	<%= f.password_field :password, id: "password", class: "form-control"%>
+	<%= label_tag "password", "Password" %>
+	<%= f.submit %>
+<% end %>
+
+<% if flash[:alert] %>
+	<p><%= flash[:alert] %></p>
+<% end %>
