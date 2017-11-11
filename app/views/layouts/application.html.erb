@@ -3,22 +3,27 @@
   <head>
     <title>RailsBlog</title>
     <%= csrf_meta_tags %>
-
+		<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-		<%= link_to 'Home', some_path %>
-		<%= link_to 'Users Index', users_path %>
-  	<%= link_to 'Post Index', posts_path %>
-    <% if user_signed_in? %>
-      <%= link_to "Create Post", new_post_path %>
-      <%= link_to 'Log Out', logout_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Create Account', new_user_path %>
-      <%= link_to 'Log In', new_login_path %>
-    <% end %>
+  	<nav>
+			<ul>
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Browse Users', users_path %></li>
+				    <% if user_signed_in? %>
+					  	<li><%= link_to 'My Posts', user_posts_path(current_user) %></li>
+				      <li><%= link_to "Create Post", new_user_post_path(current_user) %></li>
+				      <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+				    <% else %>
+				      <li><%= link_to 'Create Account', new_user_path %></li>
+				      <li><%= link_to 'Log In', login_path %></li>
+				    <% end %>	
+			</ul>
+  	</nav>
+		
   	<%= yield %>
+  	 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

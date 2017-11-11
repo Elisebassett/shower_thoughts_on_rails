@@ -12,6 +12,8 @@
 //
 //= require jquery3
 //= require popper
+//= require bootstrap.min
+//= require mdb.min
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks
