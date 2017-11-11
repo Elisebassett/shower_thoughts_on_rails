@@ -5,13 +5,14 @@
 	<%= form_with url: login_info_path, scope: 'login' do |f| %>
   <div class="row">
 		<div class="col md-form">
-			<%= f.email_field :email, id: "orangeForm-name", class: "form-control" %>
+			<%= f.text_field :username, id: "orangeForm-name", class: "form-control" %>
 			<%= label_tag "orangeForm-name", "Username" %>
 		</div>
 	<div class="row">
 		<div class="col md-form">
 			<%= f.password_field :password, id: "orangeForm-pass", class: "form-control" %>
 			<%= label_tag "orangeForm-pass", "Password" %>
+			<%= f.submit %>
 		</div>
 	</div>
 	<% end %>	    

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'Account Made! Welcome to the world!'
-      redirect_to @user
+      redirect_to "/login"
     else
       flash[:alert] = 'Your account was not created'
       redirect_to new_user_path
@@ -26,6 +26,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @current_user = current_user
+    @posts = @user.posts.reverse_order
   end
 
   def update
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :username)
   end
 
 end

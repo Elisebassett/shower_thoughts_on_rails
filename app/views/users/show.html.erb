@@ -1,2 +1,39 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1><%= @user.full_name %></h1>
+		</div><!-- col -->
+	</div>
+	<div class="row">
+		<div class="col">
+			<br>
+			<h5>Username: <%= @user.username %></h5>
+			<h5>Bio:</h5> 
+			<% if @user == @current_user %>
+				<% if @user.bio %>
+					<p><%= @user.bio %></p>
+				<% else %>
+						<p>Where's your bio?! Don't you want one?! Click below to edit your bio!</p>
+				<% end %>
+				<a href="/change_details"><button class="btn btn-info round">Edit Your Info</button></a>
+			<% else %>
+				<p>No bio to be found</p>
+			<% end %>
+		</div><!-- col -->
+	</div><!-- row -->
+	<div class="row">
+		<% @posts.each do |posts| %>
+			<div class="col-6">
+				<div class="card card-body post_container">
+					<form action="/profile" method="POST">
+				    <textarea class="card-text post" readonly="true" maxlength='150'><%= posts.content %></textarea>
+						<% if @user == @current_user %>
+								<a class="delete_post card-link" href="/delete_post/<%= posts.id %>">Delete</a>
+								<i class="fa fa-pencil edit_post card-link" aria-hidden="true"> </i>
+						<% end %>
+					</form>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div><!-- container -->

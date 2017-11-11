@@ -1,2 +1,40 @@
-<h1>Users#even</h1>
-<p>Find me in app/views/users/even.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1 class="spaceing h1 text-center mb-4">Change Details</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="md-form">
+				<%= form_with model: @user do |f| %>
+					<div class="col-12">
+						<%= f.text_field :first_name, id: "first_name_update" %>
+						<%= label_tag "first_name_update", "First Name" %>
+					</div>
+					<div class="col-12">
+						<%= f.text_field :last_name, id: "last_name_update" %>
+						<%= label_tag "last_name_update", "Last Name" %>
+					</div>
+					<div class="col-12">
+						<%= f.text_field :username, id: "username_update" %>
+						<%= label_tag "username_update", "Username" %>
+					</div>
+					<div class="col-12">
+						<%= f.text_field :email, id: "email_update" %>
+						<%= label_tag "email_update", "Email" %>
+					</div>
+					<div class="col-12">
+						<%= f.text_area :bio, id: "bio_update" %>
+						<%= label_tag "bio_update", "Bio" %>
+					</div>
+					<div class="col-12">
+						<%= f.password_field :password, id: "password_update" %>
+						<%= label_tag "password_update", "Password" %>
+					</div>
+					<%= f.submit %>
+				<% end %>
+			</div>
+		</div><!-- col -->
+	</div><!-- row -->
+</div><!-- container -->

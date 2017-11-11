@@ -6,12 +6,12 @@ class LoginController < ApplicationController
 
   def create
     @user = User.find_by(session_params)
-    if @user
+    if @user 
       session[:id] = @user.id
-      redirect_to @user
+      redirect_to '/'
     else
-      flash[:alert] = 'Your email or password are incorrect'
-      redirect_to new_session_path
+      flash[:alert] = 'Your username or password are incorrect'
+      redirect_to login_path
     end
   end
 
@@ -24,7 +24,9 @@ class LoginController < ApplicationController
     redirect_to users_path
   end
 
+  private
+
   def session_params
-    params.require(:login).permit(:email, :password)
+    params.require(:login).permit(:username, :password)
   end
 end
