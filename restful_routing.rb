@@ -25,7 +25,7 @@ edit_comment GET    /comments/:id/edit(.:format) comments#edit
              DELETE /posts/:id(.:format)         posts#destroy
         root GET    /                            home#index
        login GET    /login(.:format)             login#new
-      logout DELETE /logout(.:format)            login#delete
+      logout DELETE /logout(.:format)            login#destroy
   login_info POST   /login(.:format)             login#create
      friends GET    /friends(.:format)           friends#index
              POST   /friends(.:format)           friends#create
