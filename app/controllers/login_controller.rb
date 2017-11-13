@@ -6,8 +6,8 @@ class LoginController < ApplicationController
 
   def create
     @user = User.find_by(session_params)
-    if @user 
-      session[:id] = @user.id
+    if @user.present?
+      session[:user_id] = @user.id
       redirect_to '/'
     else
       flash[:alert] = 'Your username or password are incorrect'

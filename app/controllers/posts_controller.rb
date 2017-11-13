@@ -6,11 +6,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.post.create(post_params)
+    @post = current_user.posts.create(post_params)
+
   end
 
   def new
-    @post = Post.new
+    @user = current_user
+    @post = @user.posts.new
+    redirect_to @user
   end
 
   def edit
@@ -30,7 +33,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to posts_path
+    redirect_to user_path
   end
 
   private

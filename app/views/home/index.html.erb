@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
 	<div class="container">
-		<div class="row">
+		<div class="spaceing row">
 			<div class="col feed">
-				<h1>Welcome <%= @user.name %></h1>
+				<h1>Welcome <%= @user.full_name %></h1>
 			</div><!-- col -->
 		</div><!-- row -->
 		<div class="row">
@@ -10,7 +10,7 @@
 				<%= link_to 'Your Profile', user_path(@user), :class => "btn btn-info round" %>
 			</div>
 			<div class="col">
-				<%= link_to 'New Shower Thought', new_user_post_path(@user), :class => "btn btn-outline-info waves-effect round" %>
+				<%= link_to 'New Shower Thought', new_post_path, :class => "btn btn-outline-info waves-effect round" %>
 			</div>
 		</div>
 		<div class="row">

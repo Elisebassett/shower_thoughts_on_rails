@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row">
+	<div class="spaceing row">
 		<div class="col">
 			<h1><%= @user.full_name %></h1>
 		</div><!-- col -->
@@ -15,7 +15,7 @@
 				<% else %>
 						<p>Where's your bio?! Don't you want one?! Click below to edit your bio!</p>
 				<% end %>
-				<a href="/change_details"><button class="btn btn-info round">Edit Your Info</button></a>
+				<%= link_to "Edit Your Info", edit_user_path, class: "btn btn-info round" %>
 			<% else %>
 				<p>No bio to be found</p>
 			<% end %>
@@ -25,7 +25,7 @@
 		<% @posts.each do |posts| %>
 			<div class="col-6">
 				<div class="card card-body post_container">
-					<form action="/profile" method="POST">
+					<form action="/edit_post" method="POST">
 				    <textarea class="card-text post" readonly="true" maxlength='150'><%= posts.content %></textarea>
 						<% if @user == @current_user %>
 								<a class="delete_post card-link" href="/delete_post/<%= posts.id %>">Delete</a>

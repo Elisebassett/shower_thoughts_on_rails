@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="post"></div>
 	<h1 class="home">What Was Your Last Shower Thought?</h1>
-	<%= form_for @post do |f| %>
+	<%= form_with model: Post.new do |f| %>
 		<%= f.text_field :title, placeholder: "Title" %>
 		<%= f.text_area :content, placeholder: "Write your post here!" %>
 		<input type="hidden" name="user_id" value="2">
