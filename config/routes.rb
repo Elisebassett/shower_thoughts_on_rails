@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/login' => 'login#new', as: 'login'
-  delete '/logout' => 'login#delete', as: 'logout'
+  delete '/logout' => 'login#destroy', as: 'logout'
   post '/login' => 'login#create', as: 'login_info'
 	# <http verb> <url> => <controller#action>, as: <prefix>
 
