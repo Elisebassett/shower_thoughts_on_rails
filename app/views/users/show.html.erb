@@ -25,13 +25,14 @@
 		<% @posts.each do |posts| %>
 			<div class="col-6">
 				<div class="card card-body post_container">
-					<form action="/edit_post" method="POST">
-				    <textarea class="card-text post" readonly="true" maxlength='150'><%= posts.content %></textarea>
+					<%= form_with model: @post do |f| %>
+						<%= f.text_area :content, value: posts.content, class: "card-text post", readonly: "true" %>					
 						<% if @user == @current_user %>
 								<a class="delete_post card-link" href="/delete_post/<%= posts.id %>">Delete</a>
-								<i class="fa fa-pencil edit_post card-link" aria-hidden="true"> </i>
+								<i class="fa fa-pencil edit_post card-link" aria-hidden="true"></i>
+								<p class="post_edit_submit"></p>
 						<% end %>
-					</form>
+					<% end %>
 				</div>
 			</div>
 		<% end %>
