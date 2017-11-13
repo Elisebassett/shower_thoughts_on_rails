@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   
-	resources :users do
-		resources :posts, shallow: true
-		resources :comments, shallow: true
-	end
+	resources :users 
+	# do
+	# 	resources :posts
+	# 	resources :comments
+	# end
 
-	resources :comments, only: [:show, :edit, :update, :destroy]
-	resources :posts, only: [:show, :edit, :update, :destroy]
+	resources :comments
+	# , only: [:show, :edit, :update, :destroy]
+	resources :posts
+	# a, only: [:show, :edit, :update, :destroy]
 
   root 'home#index'
 
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
 	# <http verb> <url> => <controller#action>, as: <prefix>
 
 	resources :friends
-	resources :users
+	# resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

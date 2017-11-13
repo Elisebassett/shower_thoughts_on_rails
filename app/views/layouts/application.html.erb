@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBlog</title>
+    <title>Shower Thoughts Community</title>
     <%= csrf_meta_tags %>
 		<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,8 +13,8 @@
 				<li><%= link_to 'Home', root_path %></li>
 				<li><%= link_to 'Browse Users', users_path %></li>
 				    <% if user_signed_in? %>
-					  	<li><%= link_to 'My Posts', user_posts_path(current_user) %></li>
-				      <li><%= link_to "Create Post", new_user_post_path(current_user) %></li>
+					  	<li><%= link_to 'My Profile', user_path(current_user) %></li>
+				      <li><%= link_to "Create Post", new_post_path(current_user) %></li>
 				      <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
 				    <% else %>
 				      <li><%= link_to 'Create Account', new_user_path %></li>
