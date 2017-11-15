@@ -26,13 +26,17 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to @user
+    respond_to do |format|
+      @post.update(post_params)
+      format.js # edit.js.erb
+    end
   end
 
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to user_path
+    respond_to do |format|
+      Post.find(params[:id]).destroy
+      format.js # destroy.js.erb
+    end
   end
 
   private

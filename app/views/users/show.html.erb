@@ -9,32 +9,28 @@
 			<br>
 			<h5>Username: <%= @user.username %></h5>
 			<h5>Bio:</h5> 
-			<% if @user == @current_user %>
+			<% if @user == current_user %>
 				<% if @user.bio %>
 					<p><%= @user.bio %></p>
 				<% else %>
 						<p>Where's your bio?! Don't you want one?! Click below to edit your bio!</p>
 				<% end %>
-				<%= link_to "Edit Your Info", edit_user_path, class: "btn btn-info round" %>
+				<div class="row button_spacing">
+					<div class="col">
+						<%= link_to "Edit Your Info", edit_user_path, class: "btn btn-info round" %>
+					</div>
+					<div class="col">
+					<%= link_to 'New Shower Thought', new_post_path, :class => "btn btn-outline-info waves-effect round" %>
+					</div>
+				</div>
 			<% else %>
 				<p>No bio to be found</p>
 			<% end %>
 		</div><!-- col -->
 	</div><!-- row -->
 	<div class="row">
-		<% @posts.each do |posts| %>
-			<div class="col-6">
-				<div class="card card-body post_container">
-					<%= form_with model: @post do |f| %>
-						<%= f.text_area :content, value: posts.content, class: "card-text post", readonly: "true" %>					
-						<% if @user == @current_user %>
-								<a class="delete_post card-link" href="/delete_post/<%= posts.id %>">Delete</a>
-								<i class="fa fa-pencil edit_post card-link" aria-hidden="true"></i>
-								<p class="post_edit_submit"></p>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
+		<% @posts.each do |post| %>
+			<%= render post %>
 		<% end %>
 	</div>
 </div><!-- container -->

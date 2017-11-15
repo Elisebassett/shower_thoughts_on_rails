@@ -18,9 +18,5 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
   	!session[:user_id].nil?
   end
-  
-  def full_name
-    first_name + " " + last_name
-  end
 
 end
