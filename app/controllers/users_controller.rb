@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    # @users = User.all
+    # @search_term = "%#{params[:search_term]}%"
+    # p 'LOOK HERE: ' + @search_term
+    # @results = User.where("first_name LIKE ? OR last_name LIKE ? OR username LIKE?", @search_term, @search_term, @search_term)
   end
 
   def create
@@ -22,12 +25,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @post = Post.find(params[:id])
   end
 
   def show
     @user = User.find(params[:id])
-    @current_user = current_user
     @posts = @user.posts.reverse_order
   end
 
@@ -39,7 +40,8 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path
+    session[:user_id] = nil
+    redirect_to '/'
   end
 
   private

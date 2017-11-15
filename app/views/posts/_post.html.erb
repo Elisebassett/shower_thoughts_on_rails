@@ -1,0 +1,31 @@
+<div class="col-6">
+	<div class="card card-body post_container">
+		<h4 class="card-title"><%= post.user.username %></h4>
+		<%= form_with model: post, class: "post_edit_form" do |f| %>
+			<%= f.text_area :content, value: post.content, class: "card-text post", readonly: "true" %>					
+			<% if post.user == current_user %>
+					<%= link_to "Delete", post, method: :delete, class: "delete_post card-link", remote: true %>
+					<i class="fa fa-pencil edit_post card-link" aria-hidden="true"></i>
+					<p class="post_edit_submit"></p>
+			<% end %>
+			<%= f.submit "Update Post", class: "edit_button" %>
+		<% end %>
+		<!-- Comment create form -->
+		<div class="comment_container">
+			<div class="row">
+				<p class="card-link post_comment">Comment</p>
+			</div>
+			<%= form_with model: @comment, class: "comment_form" do |f| %>
+				<%= f.text_field :content, placeholder: "Start Typing", autofocus: "true" %>
+				<%= f.hidden_field :post_id, value: post.id %>
+				<%= f.submit class: "post_comment btn btn-info round" %>
+			<% end %>
+<!-- Comments edit form -->
+		</div>
+		<div class="comments_container" id="form_<%= post.id %>">
+			<% post.comments.reverse.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+		</div>
+	</div>
+</div>

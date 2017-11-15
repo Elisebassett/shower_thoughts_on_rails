@@ -1,22 +1,50 @@
-<h1 class="h1 text-center mb-4">Create an Account</h1>
+<!-- Create New Account Form -->
+<div class="container">
+	<div class="row">
+		<h1 class="col h1 text-center mb-4">Create an Account</h1>
+	</div>
+	<div class="row">
+		<div class="col">
+			<%= form_with model: @user do |f| %>
+				<div class="md-form">
+					<i class="fa fa-user prefix black-text"></i>
+					<%= f.text_field :first_name, id: "first_name", class: "form-control"%>
+					<%= label_tag "first_name" %>
+				</div><!-- First Name -->
+				<div class="md-form">
+					<i class="fa fa-user prefix black-text"></i>
+					<%= f.text_field :last_name, id: "last_name", class: "form-control"%>
+					<%= label_tag "last_name", "Last Name"%>
+				</div>
+				<div class="md-form">
+					<i class="fa fa-user prefix black-text"></i>
+					<%= f.text_field :username, id: "username", class: "form-control"%>
+					<%= label_tag "username", "Username" %>
+				</div>
+				<div class="md-form">
+					<i class="fa fa-envelope prefix black-text"></i>
+					<%= f.text_field :email, id: "email", class: "form-control"%>
+					<%= label_tag "email", "Email" %>
+				</div>
+				<div class="md-form">
+					<i class="fa fa-lock prefix black-text"></i>
+					<%= f.password_field :password, id: "password", class: "form-control"%>
+					<%= label_tag "password", "Password" %>
+				</div>
+				<div class="text-center">
+					<%= f.submit "Create Account", class: "btn btn-elegant round" %>
+				</div>
+			<% end %><!-- end of form -->
+		</div>
+	</div>
+<!-- Flash for incorrect params -->
+	<div class="row">
+		<div class="col">
+			<% if flash[:alert] %>
+				<p><%= flash[:alert] %></p>
+			<% end %><!-- end of flash -->
+		</div>
+	</div>
+</div><!-- end of container -->
 
-<%= form_with model: @user do |f| %>
-	<i class="fa fa-user prefix black-text"></i>
-	<%= f.text_field :first_name, id: "first_name", class: "form-control"%>
-	<%= label_tag "first_name" %>
-	<%= f.text_field :last_name, id: "last_name", class: "form-control"%>
-	<%= label_tag "last_name", "Last Name"%>
-	<%= f.text_field :username, id: "username", class: "form-control"%>
-	<%= label_tag "username", "Username" %>
-	<i class="fa fa-envelope prefix black-text"></i>
-	<%= f.text_field :email, id: "email", class: "form-control"%>
-	<%= label_tag "email", "Email" %>
-	<i class="fa fa-lock prefix black-text"></i>
-	<%= f.password_field :password, id: "password", class: "form-control"%>
-	<%= label_tag "password", "Password" %>
-	<%= f.submit %>
-<% end %>
 
-<% if flash[:alert] %>
-	<p><%= flash[:alert] %></p>
-<% end %>

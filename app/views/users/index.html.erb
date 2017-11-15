@@ -1,2 +1,42 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="wrapper">
+	<div class="blue">
+		<div class="container search">
+			<div class="row">
+				<div class="col">
+					<h1 class="h1 text-center mb-4">Who are you looking for?</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+			<!-- Search for a User Form -->
+					<%= form_with url: users_path, method: "get" do |f| %>
+					<%= f.text_field :search_term, id: "user_search" %>
+					<%= label_tag "user_search", "Who are you looking for?"  %>	
+					<% end %>
+				</div>
+			</div>
+		<!-- Search Results -->
+			<div class="row">
+				<% if !@search_term.nil? %>
+					<% if @results.nil? || @results.count == 0 %>
+						<div class="col results">
+							<h3>There is no <%= @search_term.delete!('%') %> here!</h3>
+						</div>
+					<% else %>
+						<% @results.each do |user| %>
+							<div class="col results">
+								<h1><%= user.full_name %></h1>
+								<%= link_to "Visit Profile", user_path(user), class: "btn btn-info" %>
+							</div>	
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>		
+		</div>
+	</div>
+</div>
+
+
+	<%= form_with url: users_path, method: "get" do |f| %>
+					<%= f.text_field :search_term, id: "nav_search", class: "form-control mr-sm-2", placeholder: "Search for User" %>
+				<% end %>

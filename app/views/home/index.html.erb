@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
 	<div class="container">
-		<div class="spaceing row">
+		<div class="row">
 			<div class="col feed">
 				<h1>Welcome <%= @user.full_name %></h1>
 			</div><!-- col -->
 		</div><!-- row -->
-		<div class="row">
+		<div class="row button_spacing">
 			<div class="col">
 				<%= link_to 'Your Profile', user_path(@user), :class => "btn btn-info round" %>
 			</div>
@@ -15,12 +15,7 @@
 		</div>
 		<div class="row">
 				<% @feed.each do |post| %>
-					<div class="col-6">
-						<div class="card card-body post_container">
-							<h4 class="card-title"><%= post.user.username %></h4>
-					    <textarea class="card-text post" readonly="true"><%= post.content %></textarea>
-				    </div>
-			   </div> 
+					<%= render post %>
 				<% end %>
 		</div>
 	</div><!-- container -->

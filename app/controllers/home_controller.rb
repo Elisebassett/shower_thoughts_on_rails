@@ -4,7 +4,8 @@ class HomeController < ApplicationController
   def index
     current_user
     @feed = Post.all
-    render "home/index"
+    @comment = Comment.new
   end
+
 
 end

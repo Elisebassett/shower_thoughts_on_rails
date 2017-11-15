@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<h1 class="spaceing col h1 text-center mb-4">Welcome Back!</h1>
+		<h1 class="col h1 text-center mb-4">Welcome Back!</h1>
 	</div>
 	<%= form_with url: login_info_path, scope: 'login' do |f| %>
   <div class="row">
@@ -12,7 +12,9 @@
 		<div class="col md-form">
 			<%= f.password_field :password, id: "orangeForm-pass", class: "form-control" %>
 			<%= label_tag "orangeForm-pass", "Password" %>
-			<%= f.submit %>
+		</div>
+		<div class="text-center">
+			<%= f.submit "Create Account", class: "btn btn-elegant round"%>
 		</div>
 	</div>
 	<% end %>	    
