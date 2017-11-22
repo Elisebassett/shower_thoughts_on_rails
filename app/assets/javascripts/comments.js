@@ -7,7 +7,6 @@ $(function () {
 		$(this).closest('.comment_container').find('.comment_form').show().focus();
 	});
 
-
 	$(".comment_form").on('submit', function(){
 		window.comment_container = $(this).closest('.post_container').find('.comments_container').attr('id');
 		$('.comment_form').hide();
@@ -17,7 +16,7 @@ $(function () {
 		$(this).closest('.comment').remove();
 	}); 
 
-	$('.edit_comment').on('click', function(){	
+	$(document).on('click', '.edit_comment', function(){	
 		$(this).parent('form').find('textarea').attr('readonly', false).focus();
 		$(this).parent('form').find('.comment_edit_submit').html(`
 			<p><em>You may now make changes</em></p>
