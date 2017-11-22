@@ -1,6 +1,6 @@
 $(function(){
 
-	$('.edit_post').on('click', function(){	
+	$(document).on('click', '.edit_post', function(){	
 		$(this).parent('form').find('textarea').attr('readonly', false).focus();
 		$(this).parent('form').find('.post_edit_submit').html(`
 			<p><em>You may now make changes</em></p>
